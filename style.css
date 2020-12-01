@@ -51,7 +51,7 @@ a {
 }
 
 a:hover {
-  color: #000;
+  color: #fff;
 }
 
 .container {
@@ -105,7 +105,7 @@ a:hover {
   padding: 8px;
 }
 
-//media queries
+/* media queries */
 
 @media (max-width: 960px) {
 
