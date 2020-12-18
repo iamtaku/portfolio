@@ -16,6 +16,7 @@ window.addEventListener("keyup", (e) => {
   pressed.push(e.key);
   pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
   if (pressed.join("") === secretCode.join("")) {
-    console.log("hooray");
+    const body = document.querySelector("body");
+    body.classList.add("spin");
   }
 });
