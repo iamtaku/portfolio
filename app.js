@@ -76,12 +76,19 @@ function init() {
   camera = new THREE.PerspectiveCamera(45, 4 / 3, 0.1, 100);
   camera.position.set(0.0, 1.5, 3.0);
 
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  var container = document.getElementById("canvas");
-  console.log(container);
-  var w = container.offsetWidth;
-  var h = container.offsetHeight;
-  renderer.setSize(w, h);
+  // const canvas = document.querySelector("#canvas");
+  // console.log(canvas);
+
+  parameters = {
+    antialias: true,
+    // canvas,
+  };
+  renderer = new THREE.WebGLRenderer(parameters);
+  var container = document.querySelector("div");
+  // console.log(container);
+  // var w = container.offsetWidth;
+  // var h = container.offsetHeight;
+  // renderer.setSize(w, h);
   container.appendChild(renderer.domElement);
 
   controls = new THREE.OrbitControls(camera, renderer.domElement);
