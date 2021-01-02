@@ -134,7 +134,7 @@ function init() {
   window.addEventListener("resize", onResize);
   onResize();
 
-  document.body.appendChild(renderer.domElement);
+  document.querySelector(".card-black").appendChild(renderer.domElement);
 }
 
 function onResize() {
