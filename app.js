@@ -77,6 +77,12 @@ function init() {
   camera.position.set(0.0, 1.5, 3.0);
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
+  var container = document.getElementById("canvas");
+  console.log(container);
+  var w = container.offsetWidth;
+  var h = container.offsetHeight;
+  renderer.setSize(w, h);
+  container.appendChild(renderer.domElement);
 
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.autoRotate = true;
@@ -101,16 +107,16 @@ function init() {
   var earth = new Earth(1.0, texture);
 
   // call our api and iterate over coordinates
-  fetch("https://pacific-ocean-59994.herokuapp.com/api/v1/places.json")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      data.data.forEach((item) => {
-        const { latitude, longitude } = item.attributes;
-        earth.createMarker(latitude, longitude);
-      });
-    })
-    .catch((err) => console.log(err));
+  // fetch("https://pacific-ocean-59994.herokuapp.com/api/v1/places.json")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     data.data.forEach((item) => {
+  //       const { latitude, longitude } = item.attributes;
+  //       earth.createMarker(latitude, longitude);
+  //     });
+  //   })
+  //   .catch((err) => console.log(err));
   // earth.createMarker(48.8567, 2.3508); // Paris
   // earth.createMarker(51.507222, -0.1275); // London
   // earth.createMarker(34.05, -118.25); // LA
@@ -133,8 +139,6 @@ function init() {
 
   window.addEventListener("resize", onResize);
   onResize();
-
-  document.querySelector(".card-black").appendChild(renderer.domElement);
 }
 
 function onResize() {
