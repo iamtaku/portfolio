@@ -86,11 +86,11 @@ function init() {
   renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector("canvas"),
   });
-  // var container = document.querySelector("div");
+  var container = document.querySelector("canvas");
   // console.log(container);
-  // var w = container.offsetWidth;
-  // var h = container.offsetHeight;
-  // renderer.setSize(w, h);
+  var w = container.offsetWidth;
+  var h = container.offsetHeight;
+  renderer.setSize(w, h);
   // container.appendChild(renderer.domElement);
 
   controls = new THREE.OrbitControls(camera, renderer.domElement);

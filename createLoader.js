@@ -77,14 +77,14 @@ export default {
         canvas = _canvas;
         callback = _callback;
 
-        setupLoaderElement();
-        setupCanvas();
+        // setupLoaderElement();
+        // setupCanvas();
 
         manager.onProgress = function (item, loaded, total) {
             updateProgress(loaded / total);
             if (loaded === total && !finished) {
                 finished = true;
-                hideLoader();
+                // hideLoader();
                 setTimeout(function () {
                     showCanvas();
                 }, 1000);
