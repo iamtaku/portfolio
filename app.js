@@ -83,13 +83,15 @@ function init() {
     antialias: true,
     // canvas,
   };
-  renderer = new THREE.WebGLRenderer(parameters);
-  var container = document.querySelector("div");
+  renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector("canvas"),
+  });
+  var container = document.querySelector("canvas");
   // console.log(container);
-  // var w = container.offsetWidth;
-  // var h = container.offsetHeight;
-  // renderer.setSize(w, h);
-  container.appendChild(renderer.domElement);
+  var w = container.offsetWidth;
+  var h = container.offsetHeight;
+  renderer.setSize(w, h);
+  // container.appendChild(renderer.domElement);
 
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.autoRotate = true;
@@ -104,12 +106,13 @@ function init() {
   scene.add(direcitonal);
 
   // just some code for the loading
-  var manager = createLoader(renderer.domElement, animate);
+  // var manager = createLoader(renderer.domElement, animate);
 
-  var texLoader = new THREE.TextureLoader(manager).setCrossOrigin(true);
+  // var texLoader = new THREE.TextureLoader().setCrossOrigin(true);
+  var texture = new THREE.TextureLoader().load("./assets/earth.jpg");
 
-  var texture = texLoader.load("./assets/earth.jpg");
-  texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+  // var texture = texLoader.load("./assets/earth.jpg");
+  // texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
   var earth = new Earth(1.0, texture);
 
